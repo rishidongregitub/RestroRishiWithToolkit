@@ -17,8 +17,10 @@ const Cart = () => {
           <span className='text-xl font-bold text-gray-800'>My Order</span>
           <IoMdClose onClick={() => setActiveCart(!activeCart)} className='border-2 border-gray-600 text-gray-600 font-bold p-1 text-2xl rounded-md  hover:text-red-300 hover:border-red-300 cursor-pointer' />
         </div>
-        {cartItems.map((item) => {
-          const { id, name, price, img, qnty } = item.food;
+        {cartItems.length > 0 ?  cartItems.map((item) => {
+          const { id, name, price, img} = item.food;
+          const qnty = item.qnty;
+          console.log(item.food)
           return (
             <ItemCard
               key={id}
@@ -29,7 +31,7 @@ const Cart = () => {
               qnty={qnty}
             />
           )
-        })}
+        }) : <h2 className='text-center text-xl font-bold text-gray-800'>Your cart is empty</h2> }
         <div className="absolute bottom-0">
           <h3 className='font-semibold text-gray-800 '>Items :</h3>
           <h3 className='font-semibold text-gray-800 '>Total Amount  :</h3>

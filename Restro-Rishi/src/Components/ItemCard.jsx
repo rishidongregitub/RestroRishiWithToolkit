@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import {MdDelete } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../redux/slices/CartSlice';
+import { decreamentQnty, increamentQnty, removeFromCart } from '../redux/slices/CartSlice';
 
 
 const ItemCart = ({id,name,qnty,price,img}) => {
@@ -17,9 +17,9 @@ const ItemCart = ({id,name,qnty,price,img}) => {
                 <div className="flex justify-between">
                     <span className="text-green-500 font-bold">₹{price}</span>
                     <div className="flex justify-center items-center gap-2 absolute right-7">
-                        <AiOutlinePlus className='border-2 border-gray-60 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-in-out cursor-pointer' />
+                        <AiOutlineMinus onClick={()=> qnty > 1 ? dispatch(decreamentQnty({id})): qnty = 0} className='border-2 border-gray-60 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-in-out cursor-pointer' />
                         <span>{qnty}</span>
-                        <AiOutlineMinus className='border-2 border-gray-60 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-in-out cursor-pointer' />
+                        <AiOutlinePlus onClick={()=> qnty >= 1 ? dispatch(increamentQnty({id})) : qnty = 0} className='border-2 border-gray-60 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-in-out cursor-pointer' />
                     </div>
                 </div>
             </div>
