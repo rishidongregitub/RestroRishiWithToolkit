@@ -1,19 +1,24 @@
 import React from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
-import {MdDelete } from 'react-icons/md'
+import {MdDelete } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { removeFromCart } from '../redux/slices/CartSlice';
 
-const ItemCart = () => {
+
+const ItemCart = ({id,name,qnty,price,img}) => {
+        const dispatch = useDispatch();
+    
     return (
         <div className="flex gap-2 shadow-md rounded-lg p-2 mb-4">
-            <MdDelete className='absolute right-7 text-gray-600 cursor-pointer'/>
-            <img src="https://img.freepik.com/free-photo/seafood-pizza_74190-5944.jpg?w=996&t=st=1693062328~exp=1693062928~hmac=53fd9ad496580db41c6ca8066510cd89c6b0a0389de8bb6b875a78a1eda09cb5" alt="" className='w-[50px] h-[50px]' />
+            <MdDelete onClick={()=> dispatch(removeFromCart(id))} className='absolute right-7 text-gray-600 cursor-pointer'/>
+            <img src={img} alt="" className='w-[50px] h-[50px]' />
             <div className="leading-5">
-                <h2 className='font-bold text-gray-800'>Onion Pizza</h2>
+                <h2 className='font-bold text-gray-800'>{name}</h2>
                 <div className="flex justify-between">
-                    <span className="text-green-500 font-bold">₹120</span>
+                    <span className="text-green-500 font-bold">₹{price}</span>
                     <div className="flex justify-center items-center gap-2 absolute right-7">
                         <AiOutlinePlus className='border-2 border-gray-60 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-in-out cursor-pointer' />
-                        <span>1</span>
+                        <span>{qnty}</span>
                         <AiOutlineMinus className='border-2 border-gray-60 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-in-out cursor-pointer' />
                     </div>
                 </div>
