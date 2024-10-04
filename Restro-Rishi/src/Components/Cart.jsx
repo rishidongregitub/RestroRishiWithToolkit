@@ -40,7 +40,7 @@ const Cart = () => {
           <button className='bg-green-500 font-bold px-3 text-white py-2 rounded-lg w-[90vw] lg:w-[18vw] mb-5'>Checkout</button>
         </div>
       </div>
-      <FaShoppingCart onClick={() => setActiveCart(!activeCart)} className={`rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-4 right-4 ${totalQnty > 0 && "animate-bounce delay-500 transition-all"}  `}/>
+      <FaShoppingCart onClick={() => setActiveCart(!activeCart)} className={`cursor-pointer rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-4 right-4 ${totalQnty > 0 && "animate-bounce delay-500 transition-all"}  `}/>
     </>
   )
 }
